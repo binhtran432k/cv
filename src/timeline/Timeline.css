@@ -1,0 +1,48 @@
+.timeline-header {
+  display: flex;
+  align-items: center;
+}
+
+.timeline-title-container {
+  flex: auto;
+}
+
+.timeline-title-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.timeline-title {
+  --primary: var(--fg);
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.timeline-subtitle {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.timeline-location {
+  color: var(--gray)
+}
+
+.timeline-subtitle,
+.timeline-time {
+  color: var(--primary)
+}
+
+.timeline-time,
+.timeline-location {
+  font-style: italic;
+}
+
+.timeline-logo img {
+  margin: 0.2rem 0.6rem;
+  width: 2.8rem;
+}
+
+.timeline-list {
+  margin: 0.2rem;
+  margin-left: 1.4em;
+}

@@ -1,0 +1,5 @@
+.skill-name {
+  text-align: right;
+  padding-right: 1rem;
+  width: var(--col-width);
+}

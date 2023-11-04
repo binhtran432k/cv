@@ -1,0 +1,17 @@
+.section-title {
+  display: flex;
+  margin: 1.2rem 0 0.4rem 0;
+  font-size: 1.6;
+  align-items: baseline;
+  column-gap: 0.2rem;
+}
+
+.section-title-line {
+  background-color: var(--fg);
+  flex: auto;
+  height: 1px;
+}
+
+.section-title-prefix {
+  color: var(--primary);
+}

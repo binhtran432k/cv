@@ -1,0 +1,13 @@
+.App {
+  margin: var(--body-margin);
+}
+
+@media print {
+  .App {
+    margin: 0;
+  }
+}
+
+.publication-item {
+  margin-bottom: 0.4rem;
+}

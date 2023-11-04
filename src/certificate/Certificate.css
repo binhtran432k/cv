@@ -1,0 +1,11 @@
+.certificate-year {
+  vertical-align: top;
+  text-align: right;
+  font-weight: 400;
+  padding-right: 1rem;
+  width: var(--col-width);
+}
+
+.certificate-name {
+  font-weight: 500;
+}

@@ -1,0 +1,50 @@
+:root {
+  --indigo: #6610f2;
+  --skyblue: #0395de;
+  --red: #dc3522;
+  --nephritis: #27ae60;
+  --concrete: #95a5a6;
+  --darknight: #131a28;
+
+  --body-margin: 4rem;
+  --col-width: 12rem;
+  --primary: var(--indigo);
+  --secondary: #6c757d;
+  --gray: var(--concrete);
+  --bg: #ffffff;
+  --fg: #212529;
+
+  font-family: "Noto Sans", sans-serif;
+  color: var(--fg);
+  background-color: var(--bg);
+}
+
+@media print {
+  :root {
+    font-size: 10pt;
+  }
+}
+
+@page {
+  margin: 4em;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a:link,
+a:visited {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: 0.65;
+}
+
+.page-break {
+  page-break-after: always;
+}

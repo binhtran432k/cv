@@ -4,7 +4,7 @@
 
 @media print {
   .App {
-    margin: 0;
+    margin: 0.125rem;
   }
 }
 

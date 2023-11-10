@@ -102,7 +102,7 @@ export const projects = [
     title: "Dracula.nvim",
     subtitle: "Personal",
     time: "2023",
-    location: "Ho Chi Minh, Vietnam",
+    location: null,
     items: [
       "A Dracula theme for Neovim, written in Lua, that provides a dark and stylish color scheme for the text editor, making it easier to focus on your work and reduce eye strain.",
     ],
@@ -113,7 +113,7 @@ export const projects = [
     title: "PlantUML previewer",
     subtitle: "Personal",
     time: "2022",
-    location: "Ho Chi Minh, Vietnam",
+    location: null,
     items: [
       "A PlantUML previewer written in Java that supports hot reloading, allowing you to see changes to your UML diagrams reflected in the previewer immediately, without having to restart the application.",
       "I built this tool for my personal use case of drawing UML diagrams for other projects. It uses PlantUML under the hood and Java Swing for the UI. It can work without PlantUML installed because it is embedded.",
@@ -125,7 +125,7 @@ export const projects = [
     title: "IBus Bamboo",
     subtitle: "Open Source Software",
     time: "2021",
-    location: "Ho Chi Minh, Vietnam",
+    location: null,
     items: [
       "Vietnamese input method environment written in Go that uses the IBus framework. It is a fast and efficient way to input Vietnamese text in any Linux application.",
       "I contributed icons for English and Vietnamese input modes, as well as a Unicode completion helper that suggests Unicode characters as you type.",

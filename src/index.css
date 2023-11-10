@@ -13,14 +13,16 @@
   --nephritis: #27ae60;
   --concrete: #95a5a6;
   --darknight: #131a28;
+  --white: #ffffff;
+  --dark: #212529;
 
   --body-margin: 4rem;
   --col-width: 12rem;
-  --primary: var(--indigo);
+  --primary: var(--skyblue);
   --secondary: #6c757d;
   --gray: var(--concrete);
-  --bg: #ffffff;
-  --fg: #212529;
+  --bg: var(--white);
+  --fg: var(--dark);
 
   font-family: "Noto Sans", sans-serif;
   color: var(--fg);
@@ -29,6 +31,8 @@
 
 @media print {
   :root {
+    --fg: var(--dark);
+    --bg: initial;
     font-size: 10pt;
   }
 }

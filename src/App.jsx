@@ -48,7 +48,7 @@ import { UserInfo } from "./userinfo/UserInfo";
  * @property {string} title
  * @property {string} subtitle
  * @property {string} time
- * @property {string} location
+ * @property {string?} location
  * @property {string[]} items
  */
 

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import "./Certificate.css";
 
 /**
@@ -5,9 +6,7 @@ import "./Certificate.css";
  * @property {import("src/App").CertificateItem[]} certificates
  */
 
-/**
- * @param {CertificateProps} _
- */
+/** @type {React.FC<CertificateProps>} */
 export const Certificate = ({ certificates }) => {
   /** @type {Record<number, import("src/App").CertificateItem[]>} */
   const certificateGroupByYear = {};
@@ -34,8 +33,8 @@ export const Certificate = ({ certificates }) => {
           {certificateGroupByYearArr.map(
             /**
              * @param {[number, import("src/App").CertificateItem[]]} _
+             * @returns {React.ReactNode[]}
              */
-            // @ts-ignore
             ([year, cs]) => (
               <tr key={year}>
                 <th className="certificate-year">{year}</th>
@@ -44,7 +43,7 @@ export const Certificate = ({ certificates }) => {
                     <div key={i}>
                       <span className="certificate-name">
                         {c.url ? (
-                          <a href={c.url} target="_blank">
+                          <a href={c.url} target="_blank" rel="noreferrer">
                             {c.name}
                           </a>
                         ) : (
@@ -62,4 +61,8 @@ export const Certificate = ({ certificates }) => {
       </table>
     </div>
   );
+};
+
+Certificate.propTypes = {
+  certificates: PropTypes.arrayOf(PropTypes.object.isRequired),
 };

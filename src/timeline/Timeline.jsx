@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import "./Timeline.css";
 
 /**
@@ -6,7 +7,7 @@ import "./Timeline.css";
  */
 
 /**
- * @param {TimelineProps} _
+ * @type {React.FC<TimelineProps>} _
  */
 export const Timeline = ({ timeline }) => {
   return (
@@ -21,10 +22,7 @@ export const Timeline = ({ timeline }) => {
           <div className="timeline-title-row">
             <h3 className="timeline-title">
               {timeline.link ? (
-                <a
-                  href={timeline.link}
-                  target="_blank"
-                >
+                <a href={timeline.link} target="_blank" rel="noreferrer">
                   {timeline.title}
                 </a>
               ) : (
@@ -48,4 +46,8 @@ export const Timeline = ({ timeline }) => {
       </ul>
     </div>
   );
+};
+
+Timeline.propTypes = {
+  timeline: PropTypes.object.isRequired,
 };

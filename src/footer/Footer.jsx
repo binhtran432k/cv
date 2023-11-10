@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import "./Footer.css";
 
 /**
@@ -6,7 +7,7 @@ import "./Footer.css";
  */
 
 /**
- * @param {FooterProps} _
+ * @type {React.FC<FooterProps>} _
  */
 export const Footer = ({ user }) => {
   return (
@@ -19,4 +20,8 @@ export const Footer = ({ user }) => {
       <div className="footer-title">Curriculum Vitae</div>
     </div>
   );
+};
+
+Footer.propTypes = {
+  user: PropTypes.object.isRequired,
 };

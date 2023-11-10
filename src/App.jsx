@@ -69,6 +69,7 @@ import { UserInfo } from "./userinfo/UserInfo";
 /**
  * @param {string} title
  * @param {TimelineItem[]} timelineSection
+ * @returns {React.ReactNode}
  */
 function getTimelineSection(title, timelineSection) {
   return (
@@ -80,7 +81,10 @@ function getTimelineSection(title, timelineSection) {
   );
 }
 
-function App() {
+/**
+ * @type {React.FC}
+ */
+export const App = () => {
   return (
     <div className="App">
       <UserInfo user={user} />
@@ -104,6 +108,4 @@ function App() {
       <Footer user={user} />
     </div>
   );
-}
-
-export default App;
+};

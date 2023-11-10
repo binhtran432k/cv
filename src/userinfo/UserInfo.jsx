@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { FaGithub, FaPhone, FaEnvelope, FaLinkedin } from "react-icons/fa";
 import "./UserInfo.css";
 
@@ -7,7 +8,7 @@ import "./UserInfo.css";
  */
 
 /**
- * @param {UserInfoProps} _
+ * @type {React.FC<UserInfoProps>} _
  */
 export const UserInfo = ({ user }) => {
   return (
@@ -24,15 +25,16 @@ export const UserInfo = ({ user }) => {
             [FaEnvelope, user.email],
             [FaPhone, user.phone],
           ]
-            .filter(([_, x]) => Boolean(x))
+            .filter(([, x]) => Boolean(x))
             .map(
               /**
                * @param {[import("react-icons").IconType, import("../App").ContactItem]} _
+               * @param {number} i
+               * @returns {React.ReactNode}
                */
-              // @ts-ignore
               ([Icon, x], i) => (
                 <li key={i} className="contact-item">
-                  <a href={x.url} target="_blank">
+                  <a href={x.url} target="_blank" rel="noreferrer">
                     <Icon />
                     {x.text}
                   </a>
@@ -53,4 +55,8 @@ export const UserInfo = ({ user }) => {
       </div>
     </div>
   );
+};
+
+UserInfo.propTypes = {
+  user: PropTypes.object.isRequired,
 };

@@ -34,7 +34,7 @@
 
 .avatar img {
   --shadow-size: 0.125rem;
-  background-color: var(--primary);
+  background-color: var(--secondary);
   height: 10rem;
   width: 10rem;
   border-radius: 50%;

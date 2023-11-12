@@ -1,28 +1,11 @@
 :root {
-  --indigo: #6610f2;
-  --purple: #6f42c1;
-  --pink: #d63384;
-  --orange: #fd7e14;
-  --yellow: #ffc107;
-  --green: #198754;
-  --teal: #20c997;
-  --cyan: #0dcaf0;
-  --blue: #0d6efd;
-  --skyblue: #0395de;
-  --red: #dc3522;
-  --nephritis: #27ae60;
-  --concrete: #95a5a6;
-  --darknight: #131a28;
-  --white: #ffffff;
-  --dark: #212529;
-
   --body-margin: 4rem;
   --col-width: 12rem;
-  --primary: var(--skyblue);
-  --secondary: #6c757d;
-  --gray: var(--concrete);
-  --bg: var(--white);
-  --fg: var(--dark);
+  --primary: darkorchid;
+  --secondary: orchid;
+  --gray: darkgray;
+  --bg: white;
+  --fg: black;
 
   font-family: "Noto Sans", sans-serif;
   color: var(--fg);
@@ -31,7 +14,7 @@
 
 @media print {
   :root {
-    --fg: var(--dark);
+    --fg: black;
     --bg: initial;
     font-size: 10pt;
   }

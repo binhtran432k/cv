@@ -1,5 +1,5 @@
 /**
- * @generator T
+ * @template T
  */
 class Heap {
   /**

@@ -1,38 +1,44 @@
-//@ts-check
-const MOD = BigInt(1e9 + 7);
-
 /**
- * @param {number} n
- * @param {number} m
+ * @param {number} n number of nodes
+ * @param {number} m number of edges
+ * @param {[number, number][]} edges
+ * @param {number} s start node
  */
-function legoBlocks(n, m) {
-  /** @type {bigint[]} */
-  const oneFloor = [0n, 1n, 2n, 4n, 8n];
-  /** @type {bigint[]} */
-  const dirtyMultiFloor = [0n];
-  /** @type {bigint[]} */
-  const cleanMultiFloor = [0n];
+function bfs(n, m, edges, s) {
+  const graph = [...Array(n)].map(() => []);
+  edges.forEach(([u, v]) => {
+    graph[u - 1].push(v);
+    graph[v - 1].push(u);
+  });
 
-  for (let width = 1; width <= m; width++) {
-    if (width > 4) {
-      oneFloor[width] = oneFloor.slice(-4).reduce((p, c) => p + c) % MOD;
-    }
+  const distances = [...Array(n)].map(() => -1);
+  distances[s - 1] = 0;
 
-    dirtyMultiFloor[width] = [...Array(n)].reduce(
-      (p) => (p * oneFloor[width]) % MOD,
-      1n,
-    );
-
-    cleanMultiFloor[width] = [...Array(width - 1)]
-      .map((_, i) => i + 1)
-      .reduce((p, i) => {
-        return (
-          p - ((cleanMultiFloor[i] * dirtyMultiFloor[width - i]) % MOD) + MOD
-        );
-      }, dirtyMultiFloor[width] + MOD);
+  const queue = [s];
+  while (queue.length > 0) {
+    const node = queue.shift();
+    graph[node - 1]
+      .filter((x) => distances[x - 1] < 0)
+      .forEach((neighbor) => {
+        distances[neighbor - 1] = distances[node - 1] + 6;
+        queue.push(neighbor);
+      });
   }
 
-  return cleanMultiFloor[m] % MOD;
+  distances.splice(s - 1, 1);
+
+  return distances;
 }
 
-export default { legoBlocks };
+console.log(
+  bfs(
+    4,
+    3,
+    [
+      [1, 2],
+      [1, 3],
+      [3, 4],
+    ],
+    1,
+  ),
+);

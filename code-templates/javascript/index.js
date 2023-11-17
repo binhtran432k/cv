@@ -1,44 +1,50 @@
 /**
- * @param {number} n number of nodes
- * @param {number} m number of edges
- * @param {[number, number][]} edges
- * @param {number} s start node
+ * @param {number} n number of nodes in graph
+ * @param {[number, number, number][]} edges each edge is [startNode, endNode, length]
+ * @param {number} s the start node number
  */
-function bfs(n, m, edges, s) {
-  const graph = [...Array(n)].map(() => []);
-  edges.forEach(([u, v]) => {
-    graph[u - 1].push(v);
-    graph[v - 1].push(u);
+function shortestReach(n, edges, s) {
+  /** @type {Record<number,number>[]} */
+  const graph = [...Array(n)].map(() => ({}));
+  edges.forEach(([u, v, l]) => {
+    graph[u - 1][v] = Math.min(l, graph[u - 1][v] ?? l);
+    graph[v - 1][u] = Math.min(l, graph[v - 1][u] ?? l);
   });
 
-  const distances = [...Array(n)].map(() => -1);
-  distances[s - 1] = 0;
+  const dist = graph.map(() => -1);
+  dist[s - 1] = 0;
 
-  const queue = [s];
+  const queue = [[s, dist[s - 1]]];
   while (queue.length > 0) {
-    const node = queue.shift();
-    graph[node - 1]
-      .filter((x) => distances[x - 1] < 0)
-      .forEach((neighbor) => {
-        distances[neighbor - 1] = distances[node - 1] + 6;
-        queue.push(neighbor);
-      });
+    const [u, d] = queue.shift();
+
+    if (d > dist[u - 1]) continue;
+
+    Object.entries(graph[u - 1]).forEach(([v, l]) => {
+      const alt = dist[u - 1] + l;
+      if (alt < dist[v - 1] || dist[v - 1] === -1) {
+        dist[v - 1] = alt;
+        queue.push([v, alt]);
+      }
+    });
   }
 
-  distances.splice(s - 1, 1);
+  dist.splice(s - 1, 1);
 
-  return distances;
+  return dist;
 }
 
-console.log(
-  bfs(
-    4,
-    3,
-    [
-      [1, 2],
-      [1, 3],
-      [3, 4],
-    ],
-    1,
-  ),
+const a = shortestReach(
+  4,
+  [
+    [1, 2, 24],
+    [1, 2, 24],
+    [1, 2, 24],
+    [1, 4, 20],
+    [3, 1, 3],
+    [4, 3, 12],
+  ],
+  1,
 );
+
+console.log(a);

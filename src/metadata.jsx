@@ -1,7 +1,7 @@
 import avatarUrl from "./assets/avatar.png";
+import fsoftLogo from "./assets/logos/fsoft.svg";
 import hcmutLogo from "./assets/logos/hcmut.png";
 import nashTechLogo from "./assets/logos/nashtech.svg";
-import fsoftLogo from "./assets/logos/fsoft.svg";
 
 /**
  * @param {string} username

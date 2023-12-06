@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import "./Skill.css";
 
 /**
@@ -6,7 +7,7 @@ import "./Skill.css";
  */
 
 /**
- * @param {SkillProps} _
+ * @type {React.FC<SkillProps>}
  */
 export const Skill = ({ skills }) => {
   return (
@@ -23,4 +24,8 @@ export const Skill = ({ skills }) => {
       </table>
     </div>
   );
+};
+
+Skill.propTypes = {
+  skills: PropTypes.arrayOf(PropTypes.object.isRequired),
 };

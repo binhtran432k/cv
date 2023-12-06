@@ -110,11 +110,11 @@ class Heap {
       this.heap[0] = this.heap.pop();
     }
     this.#heapifyDown(0);
-    return item;
+    return item[0];
   }
 
   peek() {
-    return this.heap[0] ?? null;
+    return this.heap[0]?.[0] ?? null;
   }
 
   size() {

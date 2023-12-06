@@ -1,50 +1,57 @@
-/**
- * @param {number} n number of nodes in graph
- * @param {[number, number, number][]} edges each edge is [startNode, endNode, length]
- * @param {number} s the start node number
- */
-function shortestReach(n, edges, s) {
-  /** @type {Record<number,number>[]} */
-  const graph = [...Array(n)].map(() => ({}));
-  edges.forEach(([u, v, l]) => {
-    graph[u - 1][v] = Math.min(l, graph[u - 1][v] ?? l);
-    graph[v - 1][u] = Math.min(l, graph[v - 1][u] ?? l);
+(() => {
+  const readline = require("readline");
+  const { stdin } = require("process");
+  const rl = readline.createInterface({ input: stdin });
+  // const inputs = [];
+  rl.on("line", (input) => {
+    if (input === "") {
+      // main(inputs);
+      return rl.close();
+    }
+    main([input]);
+    // inputs.push(input);
   });
+})();
 
-  const dist = graph.map(() => -1);
-  dist[s - 1] = 0;
-
-  const queue = [[s, dist[s - 1]]];
-  while (queue.length > 0) {
-    const [u, d] = queue.shift();
-
-    if (d > dist[u - 1]) continue;
-
-    Object.entries(graph[u - 1]).forEach(([v, l]) => {
-      const alt = dist[u - 1] + l;
-      if (alt < dist[v - 1] || dist[v - 1] === -1) {
-        dist[v - 1] = alt;
-        queue.push([v, alt]);
-      }
-    });
-  }
-
-  dist.splice(s - 1, 1);
-
-  return dist;
+/** @param {string[]} inputs */
+function main(inputs) {
+  const [m, n] = inputs[0].split(/\s+/).map(Number);
+  console.log(towerOfHanoi(m, n));
 }
 
-const a = shortestReach(
-  4,
-  [
-    [1, 2, 24],
-    [1, 2, 24],
-    [1, 2, 24],
-    [1, 4, 20],
-    [3, 1, 3],
-    [4, 3, 12],
-  ],
-  1,
-);
+/**
+ * @param {number} m number of pegs
+ * @param {number} n number of disks
+ * @returns {number} number of optimal moves
+ */
+function towerOfHanoi(m, n) {
+  const MAX_PEGS = 64;
+  const MAX_DISKS = 64;
+  /** @type {number[][]} */
+  const optimalMoves = [...Array(MAX_DISKS)].map(() =>
+    [...Array(MAX_PEGS)].map(() => 0),
+  );
+  optimalMoves[0] = [...Array(MAX_PEGS)].map(() => 1);
+  [...Array(MAX_DISKS - 1)]
+    .map((_, i) => i + 1)
+    .forEach((i) => {
+      optimalMoves[i][2] = optimalMoves[i - 1][2] * 2 + 1;
+    });
+  for (let i = 1; i < MAX_DISKS; i++) {
+    for (let j = 3; j < MAX_PEGS; j++) {
+      if (i <= j - 1) {
+        optimalMoves[i][j] = 2 * (i + 1) - 1;
+      } else {
+        optimalMoves[i][j] = optimalMoves[i][j - 1];
+        for (let k = 0; k <= i - 1; k++) {
+          optimalMoves[i][j] = Math.min(
+            optimalMoves[i][j],
+            optimalMoves[i - k - 1][j - 1] + optimalMoves[k][j] * 2,
+          );
+        }
+      }
+    }
+  }
 
-console.log(a);
+  return optimalMoves[n - 1][m - 1];
+}

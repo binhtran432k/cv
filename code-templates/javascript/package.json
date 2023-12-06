@@ -1,7 +1,12 @@
 {
   "name": "javascript",
   "module": "index.js",
-  "type": "module",
+  "eslintConfig": {
+    "env": {
+      "node": true,
+      "commonjs": true
+    }
+  },
   "devDependencies": {
     "bun-types": "latest"
   },
@@ -9,3 +14,4 @@
     "typescript": "^5.0.0"
   }
 }
+

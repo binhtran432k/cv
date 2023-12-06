@@ -3,80 +3,162 @@
  */
 class Heap {
   /**
-   * @param {T[]?} arr
+   * @param {(a: [T, number], b: typeof a) => boolean} compareFn
    */
-  constructor(arr) {
-    /** @type {T[]} */
-    this.data = [];
-    if (arr) {
-      arr.forEach((x) => this.add(x));
+  constructor(compareFn) {
+    /** @type {[T, number][]} */
+    this.heap = [];
+    /** @type {typeof compareFn} */
+    this.compareFn = compareFn;
+  }
+
+  #getLeftChildIndex(parentIndex) {
+    return 2 * parentIndex + 1;
+  }
+
+  #getRightChildIndex(parentIndex) {
+    return 2 * parentIndex + 2;
+  }
+
+  #getParentIndex(childIndex) {
+    return Math.floor((childIndex - 1) / 2);
+  }
+
+  #hasLeftChild(index) {
+    return this.#getLeftChildIndex(index) < this.heap.length;
+  }
+
+  #hasRightChild(index) {
+    return this.#getRightChildIndex(index) < this.heap.length;
+  }
+
+  #hasParent(index) {
+    return this.#getParentIndex(index) >= 0;
+  }
+
+  #leftChild(index) {
+    return this.heap[this.#getLeftChildIndex(index)];
+  }
+
+  #rightChild(index) {
+    return this.heap[this.#getRightChildIndex(index)];
+  }
+
+  #parent(index) {
+    return this.heap[this.#getParentIndex(index)];
+  }
+
+  #swap(indexFst, indexSnd) {
+    const tmp = this.heap[indexFst];
+    this.heap[indexFst] = this.heap[indexSnd];
+    this.heap[indexSnd] = tmp;
+  }
+
+  #heapifyUp(index) {
+    while (
+      this.#hasParent(index) &&
+      this.compareFn(this.heap[index], this.#parent(index))
+    ) {
+      const parentIndex = this.#getParentIndex(index);
+      this.#swap(index, parentIndex);
+      index = parentIndex;
     }
   }
 
-  /**
-   * @param {number} i
-   */
-  shiftUp(i) {
-    const parentI = Math.floor((i - 1) / 2);
-    if (this.data[i] < this.data[parentI]) {
-      [this.data[i], this.data[parentI]] = [this.data[parentI], this.data[i]];
-      this.shiftUp(parentI);
+  #getSmallerChildIndex(index) {
+    if (
+      this.#hasRightChild(index) &&
+      this.compareFn(this.#rightChild(index), this.#leftChild(index))
+    ) {
+      return this.#getRightChildIndex(index);
     }
+    return this.#getLeftChildIndex(index);
   }
 
-  /**
-   * @param {number} i
-   */
-  shiftDown(i) {
-    const leftChildI = i * 2 + 1;
-    const rightChildI = leftChildI + 1;
-    const parentI = i;
-    const v = this.data[i];
-
-    if (this.data[leftChildI] < v || this.data[rightChildI] < v) {
-      const childI = function () {
-        if (this.data[leftChildI] < v && this.data[rightChildI] < v) {
-          return this.data[leftChildI] < this.data[rightChildI]
-            ? leftChildI
-            : rightChildI;
-        } else {
-          return this.data[leftChildI] < v ? leftChildI : rightChildI;
-        }
-      }.call(this);
-      this.data[parentI] = this.data[childI];
-      this.data[childI] = v;
-      this.shiftDown(childI);
+  #heapifyDown(index) {
+    while (this.#hasLeftChild(index)) {
+      const smallerChildIndex = this.#getSmallerChildIndex(index);
+      if (this.compareFn(this.heap[index], this.heap[smallerChildIndex])) {
+        break;
+      } else {
+        this.#swap(index, smallerChildIndex);
+      }
+      index = smallerChildIndex;
     }
   }
 
   /**
    * @param {T} v
+   * @param {number} priority
    */
-  add(v) {
-    this.data.push(v);
-    this.shiftUp(this.data.length - 1);
+  add(v, priority) {
+    this.heap.push([v, priority]);
+    this.#heapifyUp(this.heap.length - 1);
   }
 
   /**
    * @param {T} v
    */
   remove() {
-    const rem = this.data[0];
-    if (this.data.length < 2) {
-      this.data.pop();
-    } else {
-      this.data[0] = this.data.pop();
+    const item = this.heap[0];
+    if (!item) {
+      return null;
     }
-    this.shiftDown(0);
-    return rem;
+    if (this.heap.length < 2) {
+      this.heap.pop();
+    } else {
+      this.heap[0] = this.heap.pop();
+    }
+    this.#heapifyDown(0);
+    return item[0];
   }
 
   peek() {
-    return this.data[0];
+    return this.heap[0]?.[0] ?? null;
   }
+
   size() {
-    return this.data.length;
+    return this.heap.length;
+  }
+
+  /**
+   * @param {T} key
+   * @param {number} priority
+   */
+  update(v, priority) {
+    const i = this.heap.findIndex(([key]) => v === key);
+    if (i < 0) {
+      return;
+    }
+
+    const [, oldPriority] = this.heap[i];
+    this.heap[i] = [v, priority];
+    if (this.compareFn([v, oldPriority], [v, priority])) {
+      this.#heapifyDown(i);
+    } else {
+      this.#heapifyUp(i);
+    }
   }
 }
 
-export default Heap;
+/**
+ * @template T
+ * @extends Heap<T>
+ */
+class MinHeap extends Heap {
+  constructor() {
+    super(([, a], [, b]) => a < b);
+  }
+}
+
+/**
+ * @template T
+ * @extends Heap<T>
+ */
+class MaxHeap extends Heap {
+  constructor() {
+    super(([, a], [, b]) => a > b);
+  }
+}
+
+export { Heap, MinHeap, MaxHeap };

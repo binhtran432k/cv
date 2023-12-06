@@ -29,3 +29,34 @@ I can start working immediately, or at least I have just self-studied a fundamen
 ## Did the candidate have experience with Product company/Startup environment in the past?
 
 I do not have direct product company/startup experience, but I am a quick learner, able to work independently, and passionate about technology. I am confident I can contribute to the team's success.
+
+## Full letter
+
+Dear Hiring Manager,
+
+As an enthusiastic self-taught full-stack developer with three years of experience, I am eager to apply my skills and contribute to meaningful projects at your company. While I may lack formal experience, I am confident in my ability to learn quickly, adapt to new challenges, and deliver high-quality results.
+
+My expertise encompasses a wide range of technologies, including HTML, CSS, JavaScript, React, Node.js, MySQL, MongoDB, Python, Java, and C#, enabling me to craft dynamic and responsive web applications from scratch. I am always eager to expand my knowledge and refine my skills, keeping pace with the ever-evolving IT landscape.
+
+I understand that remote work arrangements often involve a lower salary or even no salary at all. At this stage of my career, I am primarily seeking an opportunity to gain valuable experience, collaborate with experienced professionals, and contribute to real-world projects. I believe that this approach will allow me to showcase my capabilities, learn from your team, and grow as a developer.
+
+I am eager to learn more about your company's projects and how my skills can benefit your team. I am confident that my dedication, passion, and willingness to learn will make me an asset to your organization. I am available for an immediate start and can work flexible hours to accommodate your team's schedule.
+
+Thank you for considering my application. I look forward to the opportunity to discuss my qualifications in more detail and learn more about your company's requirements.
+
+Sincerely,
+
+Binh Duc Tran
+
+## Mini letter
+
+Dear Hiring Manager,
+
+Passionate self-taught full-stack developer with 3 years of experience seeking remote position at your company. Expertise in HTML, CSS, JavaScript, React, Node.js, MySQL, MongoDB, Python, Java, and C#. Quick learner, highly motivated, eager to expand knowledge. Willing to work for zero salary to gain experience.
+
+I am eager to learn about your company's projects and how my skills can benefit your team.
+Thank you for considering my application.
+
+Sincerely,
+
+Binh Duc Tran

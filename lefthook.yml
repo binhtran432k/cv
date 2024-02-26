@@ -1,0 +1,7 @@
+pre-commit:
+  commands:
+    fmt-check:
+      run: bun run fmt.check
+    lint:
+      glob: "*.{js,ts,jsx,tsx}"
+      run: bun run lint -- {staged_files}

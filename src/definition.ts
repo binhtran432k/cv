@@ -17,9 +17,14 @@ export interface User {
     position?: string;
   };
   job?: string;
-  summary?: string[];
+  summary?: string;
   quote?: {
     value: string;
     author: string;
   };
+}
+
+export interface SkillCategory {
+  name: string;
+  skills: string[];
 }

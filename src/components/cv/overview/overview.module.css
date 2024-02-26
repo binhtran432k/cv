@@ -45,7 +45,6 @@
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
-  filter: grayscale(100%);
   box-shadow: var(--shadow-size) var(--shadow-size) var(--shadow-size)
     var(--gray);
   margin: 0 0.6rem;

@@ -23,3 +23,8 @@ export interface User {
     author: string;
   };
 }
+
+export interface SkillCategory {
+  name: string;
+  skills: string[];
+}

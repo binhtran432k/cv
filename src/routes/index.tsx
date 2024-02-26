@@ -11,7 +11,7 @@ export default component$(() => {
   return (
     <>
       <Overview user={user.value} />
-      {user.value.summary && <Summary content={user.value.summary} />}
+      <Summary content={user.value.summary} />
       <Skill />
     </>
   );

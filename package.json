@@ -1,31 +1,58 @@
 {
-  "name": "cv",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "homepage": "https://binhtran432k.github.io/cv/",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "deploy": "gh-pages -d dist",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+  "name": "cv-binh",
+  "description": "Curriculum Vitae of Binh Duc Tran",
+  "author": {
+    "name": "Binh Duc Tran",
+    "url": "https://binhtran432k.com",
+    "email": "binhtran432k@gmail.com"
   },
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-icons": "^4.11.0"
+  "keywords": [
+    "CV",
+    "Curriculum Vitae",
+    "Qwik",
+    "Bun",
+    "Vite"
+  ],
+  "engines": {
+    "node": ">=15.0.0"
+  },
+  "private": true,
+  "trustedDependencies": [
+    "sharp"
+  ],
+  "type": "module",
+  "scripts": {
+    "build": "qwik build",
+    "build.client": "vite build",
+    "build.preview": "vite build --ssr src/entry.preview.tsx",
+    "build.server": "vite build -c adapters/static/vite.config.ts",
+    "build.types": "tsc --incremental --noEmit",
+    "deploy": "echo 'Run \"npm run qwik add\" to install a server adapter'",
+    "dev": "vite --mode ssr",
+    "dev.debug": "node --inspect-brk ./node_modules/vite/bin/vite.js --mode ssr --force",
+    "fmt": "prettier --write .",
+    "fmt.check": "prettier --check .",
+    "lint": "eslint \"src/**/*.ts*\"",
+    "preview": "qwik build preview && vite preview --open",
+    "start": "vite --open --mode ssr",
+    "qwik": "qwik"
   },
   "devDependencies": {
-    "@types/react": "^18.2.15",
-    "@types/react-dom": "^18.2.7",
-    "@vitejs/plugin-react": "^4.0.3",
-    "eslint": "^8.45.0",
-    "eslint-plugin-jsdoc": "^46.9.0",
-    "eslint-plugin-react": "^7.32.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.3",
-    "gh-pages": "^6.0.0",
-    "vite": "^4.4.5"
+    "@builder.io/qwik": "^1.4.5",
+    "@builder.io/qwik-city": "^1.4.5",
+    "@types/eslint": "^8.56.2",
+    "@types/node": "^20.11.6",
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
+    "@typescript-eslint/parser": "^6.19.1",
+    "eslint": "^8.56.0",
+    "eslint-plugin-qwik": "^1.4.5",
+    "prettier": "^3.2.4",
+    "typescript": "5.3.3",
+    "undici": "*",
+    "vite": "^5.0.12",
+    "vite-tsconfig-paths": "^4.2.1"
+  },
+  "dependencies": {
+    "@qwikest/icons": "^0.0.13"
   }
 }

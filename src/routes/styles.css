@@ -1,0 +1,9 @@
+body {
+  margin: var(--body-margin);
+}
+
+@media print {
+  body {
+    margin: 0.125rem;
+  }
+}

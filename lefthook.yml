@@ -1,7 +1,7 @@
 pre-commit:
   commands:
     fmt-check:
-      run: bun run fmt.check
+      run: bunx prettier --check {staged_files}
     lint:
       glob: "*.{js,ts,jsx,tsx}"
-      run: bun run lint -- {staged_files}
+      run: bunx eslint {staged_files}

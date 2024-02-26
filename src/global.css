@@ -9,10 +9,10 @@
 :root {
   --body-margin: 4rem;
   --col-width: 12rem;
-  --primary: #DC3522;
+  --primary: #dc3522;
   --secondary: var(--primary);
-  --gray: #5D5D5D;
-  --bg: #FFFFFF;
+  --gray: #5d5d5d;
+  --bg: #ffffff;
   --fg: #333333;
 
   font-family: "Noto Sans", sans-serif;

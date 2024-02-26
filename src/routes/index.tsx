@@ -1,7 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 import { routeLoader$, type DocumentHead } from "@builder.io/qwik-city";
 import Overview from "~/components/cv/overview/overview";
-import Section from "~/components/cv/section/section";
+import Summary from "~/components/cv/summary/summary";
 import type { User } from "~/definition";
 
 export default component$(() => {
@@ -10,7 +10,7 @@ export default component$(() => {
   return (
     <>
       <Overview user={user.value} />
-      <Section title="Summary">{user.value.summary}</Section>
+      {user.value.summary && <Summary content={user.value.summary} />}
     </>
   );
 });

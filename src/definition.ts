@@ -17,5 +17,9 @@ export interface User {
     position?: string;
   };
   job?: string;
-  description?: string[];
+  summary?: string[];
+  quote?: {
+    value: string;
+    author: string;
+  };
 }

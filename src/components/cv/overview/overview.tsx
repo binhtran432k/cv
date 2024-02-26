@@ -5,34 +5,27 @@ import {
   HiPhoneSolid,
 } from "@qwikest/icons/heroicons";
 import { SiGithub, SiLinkedin } from "@qwikest/icons/simpleicons";
-import type { Link } from "~/definition";
-import { useUser } from "~/routes";
+import type { Link, User } from "~/definition";
 
 import styles from "./overview.module.css";
 
-export default component$(() => {
-  const user = useUser();
-
+export default component$<{ user: User }>(({ user }) => {
   return (
     <article class={styles.wrapper}>
       <div>
         <h1 class={styles.name}>
-          {user.value.firstName}{" "}
-          <b>
-            {[user.value.middleName, user.value.lastName]
-              .filter(Boolean)
-              .join(" ")}
-          </b>
+          {user.firstName}{" "}
+          <b>{[user.middleName, user.lastName].filter(Boolean).join(" ")}</b>
         </h1>
-        <p class={styles.job}>{user.value.job}</p>
+        <p class={styles.job}>{user.job}</p>
         <ul class={styles["contact-list"]}>
           {(
             [
-              [SiGithub, user.value.github],
-              [SiLinkedin, user.value.linkedin],
-              [HiEnvelopeSolid, user.value.email],
-              [HiPhoneSolid, user.value.phone],
-              [HiGlobeAltMini, user.value.website],
+              [SiGithub, user.github],
+              [SiLinkedin, user.linkedin],
+              [HiEnvelopeSolid, user.email],
+              [HiPhoneSolid, user.phone],
+              [HiGlobeAltMini, user.website],
             ].filter(([, x]) => x) as Array<[() => JSXOutput, Link]>
           ).map(([Icon, link]: [() => JSXOutput, Link], i) => (
             <li key={i} class={styles.contact}>
@@ -44,16 +37,18 @@ export default component$(() => {
           ))}
           <li class={styles.note}>(All links are clickable)</li>
         </ul>
-        <p class={styles.description}>{user.value.description}</p>
+        <p class={styles.description}>
+          {user.quote && `"${user.quote.value}" — ${user.quote.author}`}
+        </p>
       </div>
-      {user.value.avatar && (
+      {user.avatar && (
         <img
-          src={user.value.avatar.url}
+          src={user.avatar.url}
           alt="Avatar"
           class={styles.image}
           width="160"
           height="160"
-          style={{ objectPosition: user.value.avatar.position }}
+          style={{ objectPosition: user.avatar.position }}
         />
       )}
     </article>

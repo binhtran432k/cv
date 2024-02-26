@@ -9,11 +9,11 @@
 :root {
   --body-margin: 4rem;
   --col-width: 12rem;
-  --primary: gray;
-  --secondary: gray;
-  --gray: darkgray;
-  --bg: white;
-  --fg: black;
+  --primary: #dc3522;
+  --secondary: var(--primary);
+  --gray: #5d5d5d;
+  --bg: #ffffff;
+  --fg: #333333;
 
   font-family: "Noto Sans", sans-serif;
   color: var(--fg);
@@ -22,9 +22,14 @@
 
 @media print {
   :root {
-    --fg: black;
-    --bg: initial;
     font-size: 10pt;
+  }
+}
+
+@media print and (color) {
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 }
 

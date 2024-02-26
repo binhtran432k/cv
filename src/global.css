@@ -1,0 +1,53 @@
+/**
+ * WHAT IS THIS FILE?
+ *
+ * Globally applied styles. No matter which components are in the page or matching route,
+ * the styles in here will be applied to the Document, without any sort of CSS scoping.
+ *
+ */
+
+:root {
+  --body-margin: 4rem;
+  --col-width: 12rem;
+  --primary: gray;
+  --secondary: gray;
+  --gray: darkgray;
+  --bg: white;
+  --fg: black;
+
+  font-family: "Noto Sans", sans-serif;
+  color: var(--fg);
+  background-color: var(--bg);
+}
+
+@media print {
+  :root {
+    --fg: black;
+    --bg: initial;
+    font-size: 10pt;
+  }
+}
+
+@page {
+  margin: 4em;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a:link,
+a:visited {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: 0.65;
+}
+
+.page-break {
+  page-break-after: always;
+}

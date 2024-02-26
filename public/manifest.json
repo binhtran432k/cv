@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+  "name": "cv-binh",
+  "short_name": "CV of Binh",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "Curriculum Vitae of Binh Duc Tran"
+}

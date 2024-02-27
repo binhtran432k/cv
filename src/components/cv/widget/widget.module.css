@@ -1,0 +1,51 @@
+.wrapper {
+  margin-top: 0.4rem;
+  margin-bottom: 0.8rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.image {
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+  margin-right: 0.6rem;
+}
+
+.header-content {
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.header-right {
+  text-align: right;
+  font-style: italic;
+}
+
+.title {
+  --primary: var(--fg);
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.subtitle {
+  font-size: 1rem;
+  font-weight: 400;
+  font-variant: small-caps;
+}
+
+.location {
+  color: var(--primary);
+}
+
+.timeline {
+  color: var(--gray);
+}
+
+.item-list {
+  margin: 0.2rem;
+  margin-left: 1.4rem;
+}

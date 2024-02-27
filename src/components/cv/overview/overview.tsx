@@ -18,6 +18,7 @@ export default component$<{ user: User }>(({ user }) => {
           <b>{[user.middleName, user.lastName].filter(Boolean).join(" ")}</b>
         </h1>
         <p class={styles.job}>{user.job}</p>
+        <p class={styles.address}>{user.address}</p>
         <ul class={styles["contact-list"]}>
           {(
             [

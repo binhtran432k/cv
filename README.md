@@ -1,4 +1,4 @@
-# Qwik City App ⚡️
+# Personal Curriculum Vitae ⚡️
 
 - [Qwik Docs](https://qwik.builder.io/)
 - [Discord](https://qwik.builder.io/chat)
@@ -7,6 +7,22 @@
 - [Vite](https://vitejs.dev/)
 
 ---
+
+## Description
+
+This project showcases a personal CV built using Qwik, a high-performance web
+framework known for its speed, efficiency, and developer experience. It
+demonstrates the following capabilities:
+
+- **Dynamic and Interactive Presentation**: Leverages Qwik's innovative techniques
+  to create a visually appealing and engaging CV, potentially using elements
+  like animations or interactive components.
+- **Optimized for Browser Printing**: Ensures seamless formatting and presentation
+  quality when printed for physical copies, adhering to standard CV layouts or
+  your desired design choices.
+- **Modern Web Technology Expertise**: Highlights proficiency in Qwik, a rapidly
+  evolving framework with a growing community and gaining traction in the web
+  development landscape.
 
 ## Project Structure
 
@@ -43,17 +59,25 @@ bun qwik add # or `bun qwik add`
 Development mode uses [Vite's development server](https://vitejs.dev/). The `dev` command will server-side render (SSR) the output during development.
 
 ```shell
-npm start # or `bun start`
+bun start
 ```
 
 > Note: during dev mode, Vite may request a significant number of `.js` files. This does not represent a Qwik production build.
+
+## Lefthook
+
+You can also use the optional Lefthook to check Prettier and ESLint before commit. [Lefthook.yml](./lefthook.yml) powers this functionality.
+
+```
+lefthook install
+```
 
 ## Preview
 
 The preview command will create a production build of the client modules, a production build of `src/entry.preview.tsx`, and run a local server. The preview server is only for convenience to preview a production build locally and should not be used as a production server.
 
 ```shell
-bun preview # or `bun preview`
+bun preview
 ```
 
 ## Production
@@ -61,11 +85,12 @@ bun preview # or `bun preview`
 The production build will generate client and server modules by running both client and server build commands. The build command will use Typescript to run a type check on the source code.
 
 ```shell
-bun build # or `bun build`
+bun build
 ```
 
 ## Static Site Generator (Node.js)
 
 ```shell
+bun build # You must build first
 bun build.server
 ```

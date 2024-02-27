@@ -28,3 +28,13 @@ export interface SkillCategory {
   name: string;
   skills: string[];
 }
+
+export interface WidgetType {
+  title: string;
+  url?: string;
+  subtitle?: string;
+  location?: string;
+  timeline?: string;
+  items?: string[];
+  imageUrl?: string;
+}

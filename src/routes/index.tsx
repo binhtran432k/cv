@@ -1,5 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 import { routeLoader$, type DocumentHead } from "@builder.io/qwik-city";
+import Education from "~/components/cv/education/education";
 import Experience from "~/components/cv/experience/experience";
 import Overview from "~/components/cv/overview/overview";
 import Project from "~/components/cv/project/project";
@@ -17,6 +18,7 @@ export default component$(() => {
       <Skill />
       <Experience />
       <Project />
+      <Education />
     </>
   );
 });
@@ -48,6 +50,14 @@ export const useExperienceWidgets = routeLoader$(async () => {
 export const useProjectWidgets = routeLoader$(async () => {
   const res = await fetch(
     "https://binhtran432k.github.io/binhtran432k/metadata/project.json",
+  );
+  const data = await res.json();
+  return data.widgets as WidgetType[];
+});
+
+export const useEducationWidgets = routeLoader$(async () => {
+  const res = await fetch(
+    "https://binhtran432k.github.io/binhtran432k/metadata/education.json",
   );
   const data = await res.json();
   return data.widgets as WidgetType[];

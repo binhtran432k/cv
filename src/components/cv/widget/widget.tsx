@@ -56,9 +56,7 @@ const ItemList = component$<{ items?: string[] }>(({ items }) => {
     items && (
       <ul class={styles["item-list"]}>
         {items.map((item, i) => (
-          <li key={i} class={styles.item}>
-            {item}
-          </li>
+          <li key={i} class={styles.item} dangerouslySetInnerHTML={item} />
         ))}
       </ul>
     )

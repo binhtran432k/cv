@@ -1,0 +1,6 @@
+.note {
+  font-style: italic;
+  font-size: 0.875rem;
+  color: var(--gray);
+  margin-bottom: 0.5rem;
+}

@@ -30,12 +30,15 @@ export interface SkillCategory {
   skills: string[];
 }
 
-export interface WidgetType {
+export interface InlineType {
   title: string;
-  url?: string;
   subtitle?: string;
+  url?: string;
   location?: string;
   timeline?: string;
+}
+
+export interface WidgetType extends InlineType {
   items?: string[];
   imageUrl?: string;
 }

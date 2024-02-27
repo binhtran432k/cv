@@ -1,12 +1,13 @@
 import { component$ } from "@builder.io/qwik";
 import { routeLoader$, type DocumentHead } from "@builder.io/qwik-city";
+import Certificate from "~/components/cv/certificate/certificate";
 import Education from "~/components/cv/education/education";
 import Experience from "~/components/cv/experience/experience";
 import Overview from "~/components/cv/overview/overview";
 import Project from "~/components/cv/project/project";
 import Skill from "~/components/cv/skill/skill";
 import Summary from "~/components/cv/summary/summary";
-import type { SkillCategory, User, WidgetType } from "~/definition";
+import type { InlineType, SkillCategory, User, WidgetType } from "~/definition";
 
 export default component$(() => {
   const user = useUser();
@@ -18,6 +19,7 @@ export default component$(() => {
       <Skill />
       <Experience />
       <Project />
+      <Certificate />
       <Education />
     </>
   );
@@ -61,6 +63,14 @@ export const useEducationWidgets = routeLoader$(async () => {
   );
   const data = await res.json();
   return data.widgets as WidgetType[];
+});
+
+export const useCertificateInlines = routeLoader$(async () => {
+  const res = await fetch(
+    "https://binhtran432k.github.io/certificates/metadata.json",
+  );
+  const data = await res.json();
+  return data.inlines as InlineType[];
 });
 
 export const head: DocumentHead = {

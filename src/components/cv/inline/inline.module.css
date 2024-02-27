@@ -1,0 +1,14 @@
+.wrapper {
+  display: flex;
+}
+
+.timeline {
+  text-align: right;
+  font-weight: 400;
+  padding-right: 1rem;
+  width: var(--col-width);
+}
+
+.title {
+  font-weight: 500;
+}

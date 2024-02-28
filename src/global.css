@@ -15,7 +15,9 @@
   --bg: #ffffff;
   --fg: #333333;
 
-  font-family: "Noto Sans", sans-serif;
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
   color: var(--fg);
   background-color: var(--bg);
 }
